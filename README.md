@@ -24,7 +24,7 @@ Example of command it will run:
 
 4. Quality control parameters to talk:
 
-  apptainer exec cnv.sif perl filter_cnv.pl -numsnp 10 -length 50k OCD73trioCNVconcat -output OCD_QC1
+  apptainer exec cnv.sif perl filter_cnv.pl -length 30k OCD73trioCNVconcat -output OCD_QC1
   
   apptainer exec cnv.sif perl filter_cnv.pl OCD_QC1 --qclogfile OCD73-sample-logs-concat --qclrrsd 0.3 --qcpassout sampleall.qcpass -qcsumout sampleall.qsum -out sampleall.goodcnvs
   
