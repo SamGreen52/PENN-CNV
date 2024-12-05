@@ -32,6 +32,11 @@ Example of command it will run:
 
    apptainer exec cnv.sif perl scan_region.pl cnvcall.clean centromeric_telomeric_regions -minqueryfrac 0.5 > cnvcall.imm; fgrep -v -f cnvcall.imm cnvcall.clean > sampleall.clean
 
+   apptainer exec cnv.sif perl scan_region.pl sampleall.clean repeatmaskerregions.txt -minqueryfrac 0.5 > cnvcall.repeat; fgrep -v -f cnvcall.repeat sampleall.clean > sampleallclean.clean
+
+   apptainer exec cnv.sif perl scan_region.pl sampleallclean.clean formatted_dupgenomic_regions.txt -minqueryfrac 0.5 > cnvcall.dup; fgrep -v -f cnvcall.dup sampleallclean.clean > FINALcleanCNV.clean
+
+   sbatch Merging_Large_CNVs 
 5. Annotation:
    apptainer exec cnv.sif perl scan_region.pl sampleall.clean -knowngene knownGene_hg38txt -kgxref kgXref_hg38.txt > OlfsonAnnotated.rg38<img width="1450" alt="image" src="https://github.com/user-attachments/assets/56271b8a-2c41-4c74-9814-84195792a695">
 
