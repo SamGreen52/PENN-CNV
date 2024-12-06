@@ -34,11 +34,22 @@ Example of command it will run:
 
    apptainer exec cnv.sif perl scan_region.pl sampleall.clean repeatmaskerregions.txt -minqueryfrac 0.5 > cnvcall.repeat; fgrep -v -f cnvcall.repeat sampleall.clean > sampleallclean.clean
 
+   awk '{print $2":"$3"-"$4}' genomicSuperDups.txt > formatted_dupgenomic_regions.txt
+
    apptainer exec cnv.sif perl scan_region.pl sampleallclean.clean formatted_dupgenomic_regions.txt -minqueryfrac 0.5 > cnvcall.dup; fgrep -v -f cnvcall.dup sampleallclean.clean > FINALcleanCNV.clean
 
+   sbatch polyNregion_download
+
+   awk '{print "chr"$1":"$2"-"$3}' human_g1k_v37-N.bed > human_g1k_v37-N.txt
+
+   apptainer exec cnv.sif perl scan_region.pl FINALcleanCNV.clean human_g1k_v37-N.txt -minqueryfrac 0.5 > cnvcall.polyN; fgrep -v -f cnvcall.dup FINALcleanCNV.clean > FINALQCCNV.clean
+
    sbatch Merging_Large_CNVs 
+   
 5. Annotation:
-   apptainer exec cnv.sif perl scan_region.pl sampleall.clean -knowngene knownGene_hg38txt -kgxref kgXref_hg38.txt > OlfsonAnnotated.rg38<img width="1450" alt="image" src="https://github.com/user-attachments/assets/56271b8a-2c41-4c74-9814-84195792a695">
+   apptainer exec cnv.sif perl scan_region.pl merged_sampleall.clean  -knowngene knownGene_hg38txt -kgxref kgXref_hg38.txt > OlfsonCleanedAnnotated.rg38
+
+   <img width="1450" alt="image" src="https://github.com/user-attachments/assets/56271b8a-2c41-4c74-9814-84195792a695">
 
 ############# Large, rare CNV #############
 
