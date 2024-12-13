@@ -52,6 +52,9 @@ Example of command it will run:
 6. Bed conversion:
    apptainer exec cnv.sif perl visualize_cnv.pl OlfsonCleanedAnnotated.rg38 -format bed -output Olfson_cleaned_rg38
 
+7. Run frequnecy calculation:
+   sbatch BedParentFreq.sh n /gpfs/gibbs/project/olfson/srg52/Project_3_Emily/CNV_Emily/Signals_Complete_Final/STOP2-AFQC/BED_CONVERSION
+
 ############# Large, rare CNV #############
 
                
