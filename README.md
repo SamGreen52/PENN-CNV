@@ -53,10 +53,14 @@ Example of command it will run:
    apptainer exec cnv.sif perl visualize_cnv.pl OlfsonCleanedAnnotated.rg38 -format bed -output Olfson_cleaned_rg38
 
 7. Run frequnecy calculation:
-   sbatch BedParentFreq.sh n /gpfs/gibbs/project/olfson/srg52/Project_3_Emily/CNV_Emily/Signals_Complete_Final/STOP2-AFQC/BED_CONVERSION
+   sbatch BedParentFreq.sh n /gpfs/gibbs/project/olfson/srg52/Project_3_Emily/CNV_Emily/Signals_Complete_Final/STOP2-AFQC/BED_CONVERSION to create Olfson_cleaned_rg38_freq.bed
+   
 
 ############# Large, rare CNV #############
+/gpfs/gibbs/project/olfson/srg52/Project_3_Emily/CNV_Emily/Signals_Complete_Final/STOP2-AFQC/BED_CONVERSION
 
+1. after "Olfson_cleaned_rg38_freq.bed" is created, run Frequency_calculation.R to get AF_frequency_ofcleaned_samples.csv.
+2. Then run Stop2_BFRBCNV_Rate.R to get the large_rare_families! 
                
 ############# De Novo Calling  ############# 
 6. Download results and filter in excel by "Offspring only". Reupload new spreadsheet. 
